@@ -97,7 +97,7 @@ Katkı sunmak istiyorsanız:
 4. Uygun bir issue seçin
 5. Pull Request açın
 
-👉 Detaylar için: [CONTRIBUTING.md](./CONTRIBUTING.md)
+👉 Detaylar için: [CONTRIBUTING.md](./docs/CONTRIBUTING.md)
 
 ---
 
@@ -105,7 +105,7 @@ Katkı sunmak istiyorsanız:
 
 Bu projede herkes için geçerli davranış kuralları vardır.
 
-👉 [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
+👉 [CODE_OF_CONDUCT.md](./docs/CODE_OF_CONDUCT.md)
 
 ---
 
