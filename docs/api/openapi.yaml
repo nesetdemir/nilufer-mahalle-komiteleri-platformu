@@ -1,0 +1,172 @@
+openapi: 3.0.3
+info:
+  title: Nilüfer Mahalle Komiteleri Platformu API
+  description: Mahalle komitelerinin karar alma, duyuru yapma ve katılım süreçlerini yönetmek için RESTful API
+  version: 0.1.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+servers:
+  - url: http://localhost:8000/api/v1
+    description: Development server
+  - url: https://api.example.com/api/v1
+    description: Production server
+
+tags:
+  - name: auth
+    description: Kimlik doğrulama ve yetkilendirme
+  - name: committees
+    description: Komite yönetimi
+  - name: decisions
+    description: Karar alma süreçleri
+
+paths:
+  /auth/login:
+    post:
+      tags:
+        - auth
+      summary: Kullanıcı girişi
+      description: Kullanıcı adı ve şifre ile giriş yapar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Başarılı giriş
+        '401':
+          description: Geçersiz kimlik bilgileri
+
+  /auth/register:
+    post:
+      tags:
+        - auth
+      summary: Yeni kullanıcı kaydı
+      description: Yeni kullanıcı hesabı oluşturur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - email
+                - password
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        '201':
+          description: Kullanıcı başarıyla oluşturuldu
+        '400':
+          description: Geçersiz istek
+
+  /committees:
+    get:
+      tags:
+        - committees
+      summary: Komite listesi
+      description: Tüm komiteleri listeler
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Komite listesi
+        '401':
+          description: Yetkilendirme hatası
+
+    post:
+      tags:
+        - committees
+      summary: Yeni komite oluştur
+      description: Yeni bir komite oluşturur
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - neighborhood
+              properties:
+                name:
+                  type: string
+                neighborhood:
+                  type: string
+      responses:
+        '201':
+          description: Komite başarıyla oluşturuldu
+        '400':
+          description: Geçersiz istek
+
+  /decisions:
+    get:
+      tags:
+        - decisions
+      summary: Karar listesi
+      description: Tüm kararları listeler
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Karar listesi
+        '401':
+          description: Yetkilendirme hatası
+
+    post:
+      tags:
+        - decisions
+      summary: Yeni karar oluştur
+      description: Yeni bir karar oluşturur
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - description
+                - committee_id
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                committee_id:
+                  type: integer
+      responses:
+        '201':
+          description: Karar başarıyla oluşturuldu
+        '400':
+          description: Geçersiz istek
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
