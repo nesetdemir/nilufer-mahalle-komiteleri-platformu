@@ -199,6 +199,96 @@ Bir iş **tamamlanmış** sayılırsa:
 
 ---
 
+---
+
+
+## 🧰 Pre-commit (Zorunlu Değil, Şiddetle Önerilir)
+
+
+Bu projede **pre-commit** kullanımı zorunlu değildir; ancak kullanılması **şiddetle tavsiye edilir**.
+
+
+Pre-commit, kodu commit etmeden **önce** bazı otomatik kontroller çalıştırır. Böylece:
+
+
+- CI’da patlayacak hatalar daha commit aşamasında yakalanır
+- Pull Request’lerde gereksiz geri dönüşler azalır
+- Katkıcı deneyimi iyileşir
+
+
+### 🔍 Ne Kontrol Eder?
+
+
+Pre-commit aşağıdaki kontrolleri yapar:
+
+
+- Genel dosya kontrolleri (boşluklar, dosya sonu newline vb.)
+- Frontend için **ESLint** (React)
+- Backend için **Black** (formatlama)
+- Backend için **Ruff** (lint ve kalite)
+
+
+> Not: Pre-commit bazı hataları **otomatik olarak düzeltebilir**. Bu bilinçli bir tercihtir.
+
+
+---
+
+
+### ⚙️ Kurulum
+
+
+Pre-commit’i kullanmak için aşağıdaki adımları izleyin:
+
+
+```bash
+pip install pre-commit
+pre-commit install
+```
+
+Bu işlemden sonra her `git commit` öncesinde kontroller otomatik olarak çalışır.
+
+
+İlk commit biraz yavaş olabilir; bu normaldir.
+
+
+---
+
+
+### 🚦 Bir Commit Pre-commit’te Takılırsa
+
+
+- Hata mesajını dikkatlice okuyun
+- Otomatik düzeltilen dosyaları tekrar `git add` ile ekleyin
+- Commit’i yeniden deneyin
+
+
+```bash
+git add .
+git commit -m "fix: apply pre-commit suggestions"
+```
+
+
+---
+
+
+### 🧠 Neden Zorunlu Değil?
+
+
+Bu projede katkıcıyı zorlamak yerine **doğru araçlara yönlendirmeyi** tercih ediyoruz.
+
+
+Pre-commit kullanan geliştiriciler:
+- Daha az CI hatası alır
+- Daha hızlı merge edilir
+- Daha az review geri dönüşü yaşar
+
+
+---
+
+> Özetle: Pre-commit sizi yavaşlatmaz, **korur**.
+
+---
+
 ## 9. Son Söz
 
 Bu doküman:
