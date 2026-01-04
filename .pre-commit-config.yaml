@@ -14,15 +14,18 @@ repos:
       - id: check-json
 
   # -----------------
-  # Frontend (React)
+  # Frontend (React/Next.js)
   # -----------------
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v9.9.0
-    hooks:
-      - id: eslint
-        files: ^frontend/.*\.(js|jsx|ts|tsx)$
-        additional_dependencies:
-          - eslint
+  # Next.js kendi ESLint yapılandırmasını kullanır
+  # ESLint kontrolü npm run lint ile yapılabilir
+  # - repo: https://github.com/pre-commit/mirrors-eslint
+  #   rev: v9.9.0
+  #   hooks:
+  #     - id: eslint
+  #       files: ^frontend/.*\.(js|jsx|ts|tsx)$
+  #       additional_dependencies:
+  #         - eslint
+  #         - eslint-config-next
 
   # -----------------
   # Backend (Python)

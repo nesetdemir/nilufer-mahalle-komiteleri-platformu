@@ -61,12 +61,27 @@ root/
 ```bash
 git clone https://github.com/nesetdemir/nilufer-mahalle-komiteleri-platformu.git
 cd nilufer-mahalle-komiteleri-platformu
-docker-compose up
+docker compose -f docker/docker-compose.yml up
 ```
 
 Kurulum sonrası:
 - Backend varsayılan olarak `http://localhost:8000`
 - Frontend varsayılan olarak `http://localhost:3000`
+
+### ⚠️ Güvenlik Uyarısı
+
+**Production ortamına geçmeden önce:**
+
+1. **Tüm varsayılan şifreleri değiştirin** (`POSTGRES_PASSWORD`, `SECRET_KEY`)
+2. **Güçlü bir SECRET_KEY oluşturun**:
+   ```bash
+   python -c "import secrets; print(secrets.token_urlsafe(32))"
+   ```
+3. **`.env` dosyalarını yapılandırın** (`.env.example` dosyalarını referans alın)
+4. **CORS ayarlarını production domain'lerinize göre güncelleyin**
+5. **HTTPS kullanın**
+
+Detaylı güvenlik bilgileri için: [SECURITY.md](./SECURITY.md)
 
 ---
 
@@ -124,6 +139,14 @@ Bu projede herkes için geçerli davranış kuralları vardır.
 - Önerileriniz değerlidir
 
 Bu proje, geri bildirimlerle gelişir.
+
+---
+
+## 🔒 Güvenlik
+
+Güvenlik açığı bulduysanız, lütfen [SECURITY.md](./SECURITY.md) dosyasındaki talimatları izleyin.
+
+👉 [Güvenlik Politikası](./SECURITY.md)
 
 ---
 

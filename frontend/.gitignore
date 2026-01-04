@@ -37,6 +37,9 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
+.env.staging
+# .env.example dosyası commit edilmeli (şablon olarak)
 
 # vercel
 .vercel
@@ -44,4 +47,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-

@@ -3,8 +3,9 @@ services:
     image: postgres:15-alpine
     container_name: nilufer-postgres
     environment:
+      # ÖNEMLİ: Production'da mutlaka değiştirin!
       POSTGRES_USER: ${POSTGRES_USER:-nilufer_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-nilufer_pass}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-CHANGE_THIS_PASSWORD_IN_PRODUCTION}
       POSTGRES_DB: ${POSTGRES_DB:-nilufer_db}
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
@@ -24,8 +25,9 @@ services:
       dockerfile: docker/backend.Dockerfile
     container_name: nilufer-backend
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-nilufer_user}:${POSTGRES_PASSWORD:-nilufer_pass}@postgres:5432/${POSTGRES_DB:-nilufer_db}
-      SECRET_KEY: ${SECRET_KEY:-your-secret-key-change-in-production}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-nilufer_user}:${POSTGRES_PASSWORD:-CHANGE_THIS_PASSWORD_IN_PRODUCTION}@postgres:5432/${POSTGRES_DB:-nilufer_db}
+      # ÖNEMLİ: Production'da mutlaka değiştirin! En az 32 karakter, rastgele ve güçlü olmalı.
+      SECRET_KEY: ${SECRET_KEY:-CHANGE_THIS_SECRET_KEY_IN_PRODUCTION_MIN_32_CHARS}
       ALGORITHM: ${ALGORITHM:-HS256}
       ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-30}
     ports:
@@ -64,4 +66,3 @@ volumes:
 networks:
   nilufer-network:
     driver: bridge
-

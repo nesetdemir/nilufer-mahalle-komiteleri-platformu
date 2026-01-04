@@ -59,4 +59,3 @@ Her modül şu bileşenlere sahiptir:
 - Message queue (Celery/RabbitMQ)
 - Monitoring ve logging (Prometheus, Grafana)
 - CI/CD pipeline
-

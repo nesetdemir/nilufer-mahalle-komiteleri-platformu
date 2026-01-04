@@ -5,10 +5,7 @@ from app.core.config import settings
 
 # Veritabanı engine'i oluştur
 engine = create_engine(
-    settings.DATABASE_URL,
-    pool_pre_ping=True,
-    pool_size=10,
-    max_overflow=20
+    settings.DATABASE_URL, pool_pre_ping=True, pool_size=10, max_overflow=20
 )
 
 # Session factory
@@ -29,4 +26,3 @@ def get_db():
         yield db
     finally:
         db.close()
-

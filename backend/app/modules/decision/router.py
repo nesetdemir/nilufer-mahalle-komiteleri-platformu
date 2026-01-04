@@ -7,7 +7,7 @@ from app.modules.decision.schemas import (
     DecisionCreate,
     DecisionUpdate,
     DecisionResponse,
-    DecisionVoteCreate
+    DecisionVoteCreate,
 )
 from app.modules.auth.dependencies import get_current_active_user
 from app.modules.auth.schemas import UserResponse
@@ -20,7 +20,7 @@ async def get_decisions(
     skip: int = Query(0, ge=0),
     limit: int = Query(100, ge=1, le=100),
     committee_id: int = Query(None),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """Karar listesini getirir."""
     service = DecisionService(db)
@@ -30,10 +30,7 @@ async def get_decisions(
 
 
 @router.get("/{decision_id}", response_model=DecisionResponse)
-async def get_decision(
-    decision_id: int,
-    db: Session = Depends(get_db)
-):
+async def get_decision(decision_id: int, db: Session = Depends(get_db)):
     """Karar detayını getirir."""
     service = DecisionService(db)
     return service.get_decision(decision_id)
@@ -43,7 +40,7 @@ async def get_decision(
 async def create_decision(
     decision_data: DecisionCreate,
     current_user: UserResponse = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """Yeni karar oluşturur."""
     service = DecisionService(db)
@@ -55,7 +52,7 @@ async def update_decision(
     decision_id: int,
     decision_data: DecisionUpdate,
     current_user: UserResponse = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """Karar bilgilerini günceller."""
     service = DecisionService(db)
@@ -66,7 +63,7 @@ async def update_decision(
 async def delete_decision(
     decision_id: int,
     current_user: UserResponse = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """Kararı siler."""
     service = DecisionService(db)
@@ -78,15 +75,9 @@ async def vote_on_decision(
     decision_id: int,
     vote_data: DecisionVoteCreate,
     current_user: UserResponse = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """Karara oy verir."""
     service = DecisionService(db)
-    service.submit_vote(
-        decision_id,
-        current_user.id,
-        vote_data.vote,
-        vote_data.comment
-    )
+    service.submit_vote(decision_id, current_user.id, vote_data.vote, vote_data.comment)
     return {"message": "Oy başarıyla kaydedildi"}
-

@@ -1,0 +1,51 @@
+title = "Gitleaks Configuration for Nilüfer Mahalle Komiteleri Platformu"
+
+[extend]
+# Varsayılan kuralları genişlet
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+description = "Generic API Key"
+regex = '''(?i)(api[_-]?key|apikey)['":\s]*[=:]\s*['"]([0-9a-zA-Z\-_]{20,})['"]'''
+tags = ["key", "api"]
+
+[[rules]]
+id = "secret-key"
+description = "Secret Key (SECRET_KEY, secret_key)"
+regex = '''(?i)(secret[_-]?key|secretkey)['":\s]*[=:]\s*['"]([0-9a-zA-Z\-_]{20,})['"]'''
+tags = ["key", "secret"]
+
+[[rules]]
+id = "database-password"
+description = "Database Password"
+regex = '''(?i)(database[_-]?password|db[_-]?password|postgres[_-]?password)['":\s]*[=:]\s*['"]([^\s'"]{8,})['"]'''
+tags = ["database", "password"]
+
+[[rules]]
+id = "jwt-secret"
+description = "JWT Secret"
+regex = '''(?i)(jwt[_-]?secret|jwt[_-]?key)['":\s]*[=:]\s*['"]([0-9a-zA-Z\-_]{20,})['"]'''
+tags = ["jwt", "secret"]
+
+[allowlist]
+description = "Allowlist for example files and patterns"
+paths = [
+    '''\.md$''',
+    '''\.example$''',
+    '''\.env\.example$''',
+    '''docker-compose\.yml$''',
+    '''test.*\.py$''',
+    '''.*test\.py$''',
+    '''.*spec\.ts$''',
+    '''.*spec\.tsx$''',
+]
+commits = []
+regexes = [
+    '''your-secret-key-change-in-production''',
+    '''CHANGE_THIS.*''',
+    '''nilufer_pass''',
+    '''nilufer_user''',
+    '''localhost''',
+    '''example\.com''',
+]

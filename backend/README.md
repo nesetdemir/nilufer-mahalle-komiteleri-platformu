@@ -77,4 +77,3 @@ Komite yönetimi, üye yönetimi ve erişim kontrolü.
 
 ### Decision
 Karar alma süreçleri, oylama ve iş akışı yönetimi.
-

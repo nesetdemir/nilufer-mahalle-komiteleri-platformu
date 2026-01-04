@@ -16,4 +16,3 @@ EXPOSE 3000
 
 # Varsayılan komut
 CMD ["npm", "run", "dev"]
-

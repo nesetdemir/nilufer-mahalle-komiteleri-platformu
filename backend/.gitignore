@@ -31,6 +31,9 @@ ENV/
 .env
 .env.local
 .env.*.local
+.env.production
+.env.staging
+# .env.example dosyası commit edilmeli (şablon olarak)
 
 # IDE
 .vscode/
@@ -69,4 +72,3 @@ logs/
 .mypy_cache/
 .dmypy.json
 dmypy.json
-

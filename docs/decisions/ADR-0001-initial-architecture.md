@@ -59,4 +59,3 @@ Aşağıdaki teknoloji ve mimari kararlar alındı:
 
 ## Notlar
 Bu kararlar projenin başlangıç aşamasında alındı. İlerleyen süreçte ihtiyaçlara göre güncellenebilir.
-

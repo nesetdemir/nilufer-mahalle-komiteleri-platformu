@@ -9,7 +9,7 @@ app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
     docs_url="/docs",
-    redoc_url="/redoc"
+    redoc_url="/redoc",
 )
 
 # CORS middleware
@@ -44,7 +44,7 @@ async def root():
     return {
         "message": f"Hoş geldiniz! {settings.APP_NAME}",
         "version": settings.APP_VERSION,
-        "docs": "/docs"
+        "docs": "/docs",
     }
 
 
@@ -52,4 +52,3 @@ async def root():
 async def health_check():
     """Sağlık kontrolü endpoint'i."""
     return {"status": "healthy"}
-
