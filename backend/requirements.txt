@@ -5,7 +5,7 @@ pydantic==2.5.0
 pydantic-settings==2.1.0
 
 # Veritabanı
-sqlalchemy==2.0.23
+sqlalchemy==2.0.45
 psycopg2-binary==2.9.9
 alembic==1.12.1
 
