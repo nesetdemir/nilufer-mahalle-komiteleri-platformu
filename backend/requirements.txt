@@ -7,7 +7,7 @@ pydantic-settings==2.1.0
 # Veritabanı
 sqlalchemy==2.0.23
 psycopg2-binary==2.9.9
-alembic==1.12.1
+alembic==1.17.2
 
 # Güvenlik
 python-jose[cryptography]==3.3.0
