@@ -17,7 +17,7 @@ python-multipart==0.0.6
 # CORS (FastAPI built-in, no extra package needed)
 
 # Email validation
-email-validator==2.1.0
+email-validator==2.3.0
 
 # Development
 pytest==7.4.3
